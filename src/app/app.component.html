@@ -1,6 +1,6 @@
 <nb-layout class="menu">
 
-  <nb-layout-header fixed [hidden]="!(loggedin | async)">
+  <nb-layout-header fixed [hidden]="!(isAuthenticated() | async)">
     <div class="text-logo">
       <h3>ManageSkiff</h3>
     </div>

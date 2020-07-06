@@ -1,0 +1,28 @@
+@import '../../../../themes.scss';
+
+@include nb-install-component {
+    .caption {
+        animation: info-glow 0.5s ease infinite;
+    }
+    .error {
+        animation: error-glow 0.5s ease infinite;
+    }
+
+    @keyframes info-glow {
+        0%, 100% {
+            color: nb-theme('color-info-100');
+        }
+        50% {
+            color: nb-theme('color-info-500');
+        }
+    }  
+
+    @keyframes error-glow {
+        0%, 100% {
+            color: nb-theme('color-danger-300');
+        }
+        50% {
+            color: nb-theme('color-danger-500');
+        }
+    }    
+}

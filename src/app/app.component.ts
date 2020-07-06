@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit, OnDestroy } from '@angular/
 import { Router, NavigationEnd } from '@angular/router';
 import { NbAuthService } from '@nebular/auth';
 import { NbMenuItem, NbSearchService } from '@nebular/theme';
-import { Observable } from 'rxjs';
-import { share, takeWhile } from 'rxjs/operators';
+import { takeWhile } from 'rxjs/operators';
+
 @Component({
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -13,20 +13,24 @@ import { share, takeWhile } from 'rxjs/operators';
 export class AppComponent implements OnInit, OnDestroy {
   protected alive: boolean = true;
   public today: number = Date.now();
-  public loggedin: Observable<boolean> = new Observable<boolean>();
   public pageTitle: string = 'Niezidentyfikowana strona';
   public pageIcon: string = 'alert-triangle-outline';
 
   db: NbMenuItem[] = [
     {
       title: 'Utwórz nowy post / wpis',
+      icon: 'plus-circle-outline',
+      link: '/pages/post/create',
+    },
+    {
+      title: 'Edytuj post / wpis',
       icon: 'edit-2-outline',
-      link: '/pages/create-post',
+      link: '/pages/post/edit',
     },
     {
       title: 'Przeglądaj wpisy / posty',
       icon: 'list-outline',
-      link: '/pages/list-posts',
+      link: '/pages/post/list',
     },
     {
       title: 'Zmień informacje na stronie kontaktowej',
@@ -36,18 +40,51 @@ export class AppComponent implements OnInit, OnDestroy {
     {
       title: 'Przeglądaj dostępne galerie zdjęć',
       icon: 'camera-outline',
-      link: '/pages/list-galleries',
+      link: '/pages/gallery/list',
     },
     {
       title: 'Utwórz nową galerie zdjęć',
       icon: 'plus-circle-outline',
-      link: '/pages/create-gallery',
+      link: '/pages/gallery/create',
     },
+    {
+      title: 'Edytuj galerie zdjęć',
+      icon: 'edit-2-outline',
+      link: '/pages/gallery/edit',
+    },
+    {
+      title: 'Utwórz nowe regaty',
+      icon: 'plus-circle-outline',
+      link: '/pages/regatta/create'
+    },
+    {
+      title: 'Edytuj regaty',
+      icon: 'edit-2-outline',
+      link: '/pages/regatta/edit'
+    },
+    {
+      title: 'Przeglądaj regaty',
+      icon: 'list-outline',
+      link: '/pages/regatta/list'
+    },
+    {
+      title: 'Utwórz nowy kalendarz',
+      icon: 'plus-circle-outline',
+      link: '/pages/calendar/create'
+    },
+    {
+      title: 'Edytuj kalendarz',
+      icon: 'edit-2-outline',
+      link: '/pages/calendar/edit'
+    },
+    {
+      title: 'Przeglądaj kalendarze',
+      icon: 'list-outline',
+      link: '/pages/calendar/list'
+    }
   ];
 
-  constructor(private searchService: NbSearchService, authService: NbAuthService, private router: Router) {
-    this.loggedin = authService.onAuthenticationChange().pipe(share());
-
+  constructor(private searchService: NbSearchService, private authService: NbAuthService, private router: Router) {
     this.router.events
     .pipe(takeWhile(() => this.alive))
     .subscribe((event) => {
@@ -58,7 +95,7 @@ export class AppComponent implements OnInit, OnDestroy {
       for (const item of this.db) {
         if (item.link === event.url) {
           this.pageTitle = item.title;
-          this.pageIcon = item.icon;
+          this.pageIcon = item.icon as string;
           break;
         }
       }
@@ -70,8 +107,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.searchService.onSearchInput().subscribe((data: { term: string, tag: string }) => {
-
+    this.searchService.onSearchInput().subscribe((data: { term: string, tag: string }) => { 
+      
       if (data.term.toString().trim().length === 0) {
         this.searchService.setResults([], data.tag);
         return;
@@ -92,6 +129,10 @@ export class AppComponent implements OnInit, OnDestroy {
       }
       this.searchService.setResults(results, data.tag);
     });
+  }
+
+  public isAuthenticated() {
+    return this.authService.isAuthenticated();
   }
 }
 

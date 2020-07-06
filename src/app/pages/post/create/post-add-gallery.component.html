@@ -1,0 +1,9 @@
+<nb-card>
+  <nb-card-header>Wybierz galerie do dodania</nb-card-header>
+  <nb-card-body>
+      <app-gallery-list (onChoose)="submit($event)"></app-gallery-list>
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton status="danger" (click)="close()">Anuluj</button>
+  </nb-card-footer>
+</nb-card>
