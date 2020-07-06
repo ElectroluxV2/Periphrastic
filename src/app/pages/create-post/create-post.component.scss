@@ -1,0 +1,35 @@
+.scrollCk {
+    position: absolute;
+    top: calc(var(--header-height) + 9em);
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: var(--layout-padding);
+    margin-top: 0;
+    background-color: var(--color-basic-700) !important;
+}
+
+:host ::ng-deep th {
+    background-color: var(--background-basic-color-1) !important;
+}
+
+#toolbar-container {
+    max-width: 100%;
+}
+
+input {
+    margin-bottom: 1em;
+}
+
+button {
+    right: 0;
+    right: 0;
+    bottom: 0;
+    margin: var(--layout-padding);
+    position: absolute;
+}
+
+:host ::ng-deep .ck-content .image > figcaption {
+    background-color: var(--color-basic-700) !important;
+    color: lightgrey !important;
+}

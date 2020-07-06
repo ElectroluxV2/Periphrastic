@@ -1,0 +1,57 @@
+
+<h1 *ngIf="showAlbums">Dostępne galerie zdjęć:</h1>
+<div class="albums" *ngIf="showAlbums">
+    <nb-card *ngFor="let album of albums">
+        <nb-card-header>{{album.name}}</nb-card-header>
+        <nb-card-body>
+            <img [src]="album.coverPhotoUrl">
+        </nb-card-body>
+        <nb-card-footer>
+            <ul>
+                <li><b>Zdjęć: </b>{{album.mediaItemsCount}}</li>
+                <li><b>Widoczność: </b>{{album.privacy}}</li>
+            </ul>
+            <div class="actions">
+                <button nbButton size="small" status="primary" (click)="choose(album.id)">Wybierz</button>
+                <button nbButton size="small" status="info" (click)="show(album.id)">Podgląd</button>
+            </div>
+        </nb-card-footer>
+    </nb-card>
+</div>
+
+
+<div *ngIf="showContent">
+    <div class="actions">
+        <button nbButton size="small" status="info" (click)="back()">Wróć</button>
+        <button nbButton size="small" status="primary" (click)="choose()">Wybierz</button>
+    </div>
+    <div class="albums">
+        <nb-card *ngFor="let image of images">
+            <nb-card-body>
+                <img [src]="image.sizes[0].jpg">
+            </nb-card-body>
+            <nb-card-footer>
+                <ul>
+                    <li><b>Rozmiarów: </b>{{image.sizes.length}}</li>
+                    <li><b>Webp dostępne: </b>{{!!image.sizes[0].webp}}</li>
+                </ul>
+                <div class="actions">
+                    <a target="_blank" [href]="image.link" nbButton>Zobacz na FB</a>
+                </div>
+            </nb-card-footer>
+        </nb-card>
+    </div>
+</div>
+
+
+<div class="loading" *ngIf="loading">
+    <figure class="container">
+        <img class="lds-circle" src="../../../assets/open_skiff_poland_coin.png">
+        <figcaption class="caption" *ngIf="!error">
+            Ładowanie
+        </figcaption>
+    </figure>  
+    <h1 class="error">{{error}}</h1>
+</div>
+
+

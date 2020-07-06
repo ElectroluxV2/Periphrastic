@@ -1,0 +1,11 @@
+<h1>Witaj<b *ngIf="name"> {{name}}</b>, dotknij logo by kontynuować.</h1>
+
+<img (click)="login()" src="../../assets/Google__G__Logo.svg">
+
+<div class="info" *ngIf="name"><p (click)="selectAccount()">Nie jesteś <b>{{name}}?</b></p></div>
+
+<div class="errors">
+    <p *ngFor="let error of errors">
+        {{ error }}
+    </p>
+</div>

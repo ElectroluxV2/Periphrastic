@@ -1,0 +1,67 @@
+@import 'themes';
+
+@import '~@nebular/theme/styles/globals';
+
+$nb-enable-css-custom-properties: true;
+@include nb-install() {
+  @include nb-theme-global();
+};
+/* You can add global styles to this file, and also import other style files */
+
+.search {
+  button {
+      padding: 0 !important;
+  }
+}
+
+nb-action:last-of-type {
+  padding-right: 0 !important;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .container {
+      width: 100%;
+      vertical-align: center;
+      display: inline-block;
+      text-align: center;
+      .lds-circle {
+          display: inline-block;
+          transform: translateZ(1px);
+      }
+      .caption {
+          padding-top: 1em;
+          font-size: 2em;
+          font-weight: 700;
+      }
+      .lds-circle {
+          display: inline-block;
+          width: 10em;
+          height: 10em;
+          margin: 6px;
+          animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+      }
+      @keyframes lds-circle {
+          0%, 100% {
+              animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+          }
+          0% {
+              transform: rotateY(0deg);
+          }
+          50% {
+              transform: rotateY(360deg);
+              animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+          }
+          100% {
+              transform: rotateY(720deg);
+          }
+      }    
+  }
+  .error {
+    font-size: 1.25rem;
+    line-height: 1.10rem;
+  }
+}

@@ -1,0 +1,53 @@
+<h3>Tworzenie nowej galerii.</h3>
+<input [ngClass]="{'error': name.length==1}" [(ngModel)]="name" type="text" nbInput placeholder="Nazwa nowej galerii">
+<button (click)="save()" nbButton status="primary"><nb-icon icon="save-outline"></nb-icon></button>
+
+<p>Zaznaczono łącznie: <code [ngClass]="{'error': total==0}">{{total}}</code></p>
+
+<h6>Zaznacz albumy i / lub zdjęcia, które mają znaleźć się w galerii.</h6>
+
+<nb-tabset>
+
+    <nb-tab tabTitle="Albumy">
+        <nb-list nbInfiniteList [threshold]="500" listenWindowScroll (bottomThreshold)="loadNextAlbums()">
+            <nb-list-item [ngClass]="{'selected': selectedAlbums[index]}" *ngFor="let album of albums; let index = index">
+                <div class="main" (click)="toggleAlbum(index)" [style.backgroundImage]="'url('+album.coverPhotoBaseUrl+')'">
+                    <p [innerText]="(sh(album.title) + ' ('+album.mediaItemsCount+')')"></p>
+                </div>
+            </nb-list-item>
+        </nb-list>
+
+        <div class="loading" *ngIf="loadingAlbums">
+            <figure class="container">
+                <img class="lds-circle" src="../../../assets/open_skiff_poland_coin.png">
+                <figcaption class="caption" *ngIf="!error">
+                    Ładowanie
+                </figcaption>
+            </figure>  
+            <h1 class="error">{{error}}</h1>
+        </div>
+    </nb-tab>
+
+    <nb-tab tabTitle="Zdjęcia">
+        <nb-list nbInfiniteList [threshold]="500" listenWindowScroll (bottomThreshold)="loadNextImages()">
+            <nb-list-item [ngClass]="{'selected': selectedImages[index]}" *ngFor="let image of images; let index = index">
+                <div class="main" (click)="toggleImage(index)" [style.backgroundImage]="'url('+gImage(image.baseUrl)+')'"></div>
+            </nb-list-item>
+        </nb-list>
+
+        <div class="loading" *ngIf="loadingImages">
+            <figure class="container">
+                <img class="lds-circle" src="../../../assets/open_skiff_poland_coin.png">
+                <figcaption class="caption" *ngIf="!error">
+                    Ładowanie
+                </figcaption>
+            </figure>  
+            <h1 class="error">{{error}}</h1>
+        </div>
+
+    </nb-tab>
+
+</nb-tabset>
+
+
+

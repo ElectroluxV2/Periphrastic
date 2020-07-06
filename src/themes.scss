@@ -1,0 +1,58 @@
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/dark';
+
+$nb-themes: nb-register-theme((
+
+  // add your variables here like:
+
+  // color-primary-100: #f2f6ff,
+  // color-primary-200: #d9e4ff,
+  search-background-color: background-basic-color-2,
+  // Cke
+  ck-color-panel-background: background-basic-color-1,
+  ck-color-panel-border: border-basic-color-3,
+  ck-color-toolbar-background: background-basic-color-1,
+  ck-color-toolbar-border: border-basic-color-3,
+  ck-color-text: text-hint-color,
+
+  ck-color-button-default-background:  background-basic-color-1,
+  ck-color-button-default-hover-background:  background-basic-color-3,
+  ck-color-button-default-active-background:  background-basic-color-3,
+  ck-color-button-default-active-shadow:  background-basic-color-3,
+  ck-color-button-default-disabled-background:  background-basic-color-5,
+
+  ck-color-button-on-hover-background: background-basic-color-3,
+  ck-color-button-on-active-background: background-basic-color-3,
+  ck-color-button-on-background: background-basic-color-3,
+  ck-color-button-on-disabled-background: background-basic-color-2,
+
+  ck-color-dropdown-panel-background: background-basic-color-2,
+  ck-color-dropdown-panel-border: menu-submenu-background-color,
+
+  ck-color-list-background: background-basic-color-2,
+  ck-color-list-button-hover-background: background-basic-color-4,
+  ck-color-list-button-on-background: background-basic-color-3,
+  ck-color-list-button-on-background-focus: background-basic-color-3,
+  ck-color-list-button-on-text: text-hint-color,
+  ck-color-split-button-hover-background:  background-basic-color-4,
+
+  ck-color-base-background:  background-basic-color-2,
+  ck-color-base-border: background-basic-color-3,
+
+  text-basic-color: color-basic-500,
+
+  ck-color-input-background:background-basic-color-2,
+  ck-color-input-border:border-basic-color-3,
+  ck-color-input-text: text-basic-color,
+  ck-color-input-disabled-background: background-basic-color-2,
+  ck-color-input-disabled-border: border-basic-color-3,
+  ck-color-input-disabled-text: text-disabled-color,
+
+  ck-insert-table-dropdown-box-active-background: background-basic-color-1,
+  ck-color-table-focused-cell-background: background-basic-color-1,
+  ck-color-base-focus: border-basic-color-1,
+  ck-color-focus-border: border-basic-color-1,
+  ck-focus-ring: 'none',
+  ck-th-background: text-hint-color,
+
+), dark, dark);

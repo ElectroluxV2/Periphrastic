@@ -1,0 +1,18 @@
+
+<div [hidden]="!full" style="padding-bottom: 15px;">
+    <div class="loading" *ngIf="!(data | async).work.finished">
+        <figure class="container">
+            <img class="lds-circle" src="../../../assets/open_skiff_poland_coin.png">
+            <figcaption class="caption" *ngIf="!(data | async).error">
+                Zapisywanie
+            </figcaption>
+        </figure>  
+        <small [ngClass]="{'caption': !(data | async).error, 'error': (data | async).error}">{{(data | async).status}}</small>
+    </div>
+</div>
+
+<i>Przewidywany czas zakończenia: <code>{{ timeEnd | date:'HH:mm:ss' }}</code></i>
+
+<h3 *ngIf="(data | async).work.finished">{{(data | async).status}}</h3>
+
+<nb-progress-bar [value]="progress" [displayValue]="true"></nb-progress-bar>

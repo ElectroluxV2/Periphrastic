@@ -1,0 +1,62 @@
+nb-layout-header[hidden], nb-layout-footer[hidden] {
+    display: none !important;
+}
+.menu {
+    @media (min-width: 700px) {
+        .text-logo, .skiff-logo, .buttons {
+            display: flex;
+            align-items: center;
+            width: 33%;
+            img {
+                margin-left: auto;
+                margin-right: auto;
+                width: 10em;
+            }
+            .search {
+                margin-left: auto;
+            }
+        }
+
+        .coin-logo {
+            display: none;
+        }
+    }
+
+    @media (max-width: 360px) {
+        .text-logo, .skiff-logo {
+            display: none;
+        }
+
+        .buttons, .coin-logo {
+            display: flex;
+            align-items: center;
+            img {
+                width: 4em;
+            }
+            .search {
+                margin-left: auto;
+            }
+        }
+
+        .buttons {
+            margin-left: auto;
+        }
+    }
+
+    @media (min-width: 361px) and (max-width: 700px) {
+        .coin-logo, .text-logo {
+            display: none;
+        }
+
+        img {
+            display: flex;
+            align-items: center;
+            width: 10em;
+        }
+
+        .buttons {
+            margin-left: auto;
+        }
+    }
+}
+

@@ -1,0 +1,126 @@
+@import '../../../themes.scss';
+
+@include nb-install-component {
+    h3, h6 {
+        margin: 0;
+        margin-bottom: 5px;
+    }
+    h6 {
+        margin-top: 5px;
+    }
+    input {
+        width: calc(100% - 64px);
+        max-width: 100%;
+    }
+    .disabled {
+        opacity: 0.2;
+    }
+    .caption {
+        animation: info-glow 0.5s ease infinite;
+    }
+    .error, input::placeholder {
+        animation: error-glow 0.5s ease infinite;
+        color: nb-theme('color-danger-500');
+    }
+
+    nb-tab {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    @keyframes info-glow {
+        0%, 100% {
+            color: nb-theme('color-info-100');
+        }
+        50% {
+            color: nb-theme('color-info-500');
+        }
+    }  
+
+    @keyframes error-glow {
+        0%, 100% {
+            color: nb-theme('color-danger-300');
+        }
+        50% {
+            color: nb-theme('color-danger-500');
+        }
+    }
+
+    .selected {
+        transform: scale(0.95);
+        border-radius: 5px;
+        border: 5px solid nb-theme('color-success-300') !important;
+        padding: 5px;
+    }
+
+    nb-list-item:not(.selected) {
+        border-radius: 5px;
+        border: 5px dashed nb-theme('color-info-500') !important;
+        padding: 5px;
+    }
+}
+
+nb-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: unset;
+    nb-list-item {
+        transition: border 0.5s ease, transform 0.1s ease;
+        width: 100%;
+        margin-top: 2%;
+        padding: 0;
+        overflow: hidden;
+
+        @media (max-width: 47rem) {
+            width: 100%;
+            height: 10em;
+            margin-bottom: 1em;
+        }
+
+        @media (min-width: 48rem) and (max-width: 61rem) {
+            width: 49%;
+            height: 15em;
+            &:nth-child(odd) {
+              margin-right: 2%;
+            }
+        }
+
+        @media (min-width: 62rem) and (max-width: 71rem) {
+            width: 32%;
+            height: 14em;
+            &:not(:nth-child(3n)) {
+              margin-right: 2%;
+            }
+        }
+          
+        @media (min-width: 72rem) {
+            width: 23.5%;
+            height: 15em;
+            &:not(:nth-child(4n)) {
+              margin-right: 2%;
+            }
+        }
+
+        .main {
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            p {
+                text-align: center;
+                font-size: calc(0.7em + 0.4vw);
+                margin: 0;
+                padding-bottom: 6px;
+                font-weight: 600;
+                box-shadow: inset 0 0 0 200px rgba(0,0,0,0.2);
+                backdrop-filter: blur(10px);
+                color: #fff;
+            }
+        }
+    }
+}
+
+.group {
+    display: flex;
+}
