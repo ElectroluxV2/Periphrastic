@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "periphrastic"
+    }
+  },
+  "defaultProject": "periphrastic",
+  "cli": {
+    "analytics": "4f4ec668-82c1-40a0-93fd-258d452e2ef9"
+  }
 }
