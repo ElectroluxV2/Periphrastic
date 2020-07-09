@@ -1,3 +1,4 @@
+import { Secrets, secrets } from './../secrets';
 import { GalleryCreateComponent } from './pages/gallery/create/gallery-create.component';
 import { PostAddGalleryComponent } from './pages/post/create/post-add-gallery.component';
 import { GalleryListComponent } from './pages/gallery/list/gallery-list.component';
@@ -82,8 +83,8 @@ registerLocaleData(localePl, 'pl-PL');
       strategies: [
         NbOAuth2AuthStrategy.setup({
           name: 'google',
-          clientId: '705995026521-cdqf59nruub3asdbef7k0sa146v2aqb8.apps.googleusercontent.com',
-          clientSecret: 'jVjccasYl6fC1T3JqVLaAedB',
+          clientId: secrets.oauth2_id,
+          clientSecret: secrets.oauth2_key,
           authorize: {
             endpoint: 'https://accounts.google.com/o/oauth2/v2/auth',
             responseType: NbOAuth2ResponseType.TOKEN,
