@@ -1,4 +1,4 @@
-import { Secrets, secrets } from './../secrets';
+import { secrets } from './../secrets';
 import { GalleryCreateComponent } from './pages/gallery/create/gallery-create.component';
 import { PostAddGalleryComponent } from './pages/post/create/post-add-gallery.component';
 import { GalleryListComponent } from './pages/gallery/list/gallery-list.component';
