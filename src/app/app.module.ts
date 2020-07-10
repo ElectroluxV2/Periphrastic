@@ -1,3 +1,4 @@
+import { RegattaCreateComponent } from './pages/regatta/create/regatta-create.component';
 import { secrets } from './../secrets';
 import { GalleryCreateComponent } from './pages/gallery/create/gallery-create.component';
 import { PostAddGalleryComponent } from './pages/post/create/post-add-gallery.component';
@@ -32,6 +33,8 @@ import { PostEditComponent } from './pages/post/edit/post-edit.component';
 import { CalendarEditComponent } from './pages/calendar/edit/calendar-edit.component';
 import { CalendarCreateComponent } from './pages/calendar/create/calendar-create.component';
 import { CalendarListComponent } from './pages/calendar/list/calendar-list.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 registerLocaleData(localePl, 'pl-PL');
 
 
@@ -52,6 +55,7 @@ registerLocaleData(localePl, 'pl-PL');
     PostAddGalleryComponent,
     RegattaEditComponent,
     RegattaListComponent,
+    RegattaCreateComponent,
     GalleryEditComponent,
     PostEditComponent,
     CalendarEditComponent,
@@ -78,6 +82,7 @@ registerLocaleData(localePl, 'pl-PL');
     NbInputModule,
     NbProgressBarModule,
     NbStepperModule,
+    MatDatepickerModule,
     NbWindowModule.forRoot(),
     NbAuthModule.forRoot({
       strategies: [

@@ -27,7 +27,7 @@
     
   </nb-layout-column>
 
-  <nb-layout-footer fixed [hidden]="!(loggedin | async)">
+  <nb-layout-footer fixed [hidden]="!(isAuthenticated() | async)">
     <small> &copy; Mateusz Budzisz {{ today | date:'yyyy' }}</small>
   </nb-layout-footer>
 

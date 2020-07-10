@@ -1,6 +1,6 @@
 import { API } from './interfaces/api.interface';
 
-let baseUrl = 'http://localhost:8080';
+const baseUrl = 'http://localhost:8080';
 
 export const api: API = {
     Google: {
@@ -52,6 +52,18 @@ export const api: API = {
                     return baseUrl + '/Deceptive/image/parse/facebook/' + id;
                 }
             }
+        },
+        file: {
+            download: (id: number) => { return baseUrl + '/Deceptive/file/download/' + id; }
+        },
+        regatta: {
+            new: () => { return baseUrl + '/Deceptive/regatta/new'; },
+            list: (limit: number, pageToken: number = 0) => {
+                if (pageToken !== 0) return baseUrl + '/Deceptive/regatta/list/' + limit + '/' + pageToken; 
+                else return baseUrl + '/Deceptive/regatta/list/' + limit; 
+            },
+            delete: (id: number) => { return baseUrl + '/Deceptive/regatta/delete/' + id; },
+            update: (id: number) => { return baseUrl + '/Deceptive/regatta/update/' + id; }
         }
     }
 }

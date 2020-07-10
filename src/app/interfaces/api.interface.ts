@@ -92,6 +92,40 @@ export interface API {
                  */
                 facebook: Function;
             }
+        },
+        file: {
+            /**
+             * If valid auth token returns base url to requested file
+             * @param id file ID
+             */
+            download: Function;
+        },
+        regatta: {
+            /**
+             * Creates new entry in database with provided data
+             * @param data (POST) json encoded new regatta data
+             */
+            new: Function;
+
+            /**
+             * Lists all avaliable regatta
+             * @param limit how many entries
+             * @param pageToken after what show entries
+             */
+            list: Function;
+
+            /**
+             * Update regatta with data
+             * @param data (POST) json encoded new regatta data
+             * @param id ID of data to change
+             */
+            update: Function;
+
+            /**
+             * Deletes entry
+             * @param id ID of data to delete
+             */
+            delete: Function;
         }
     }
 }
